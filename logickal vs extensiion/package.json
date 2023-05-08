@@ -1,0 +1,126 @@
+{
+  "name": "logickal",
+  "displayName": "Logickal",
+  "description": "LogBook extension which is very logical",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.77.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "activityBar",
+          "title": "Logickal",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "activityBar": [
+        {
+          "id": "logickal.sidebar",
+          "name": "Logickal"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "logickal.whiteboard",
+        "title": "Logickal Whiteboard"
+      },
+      {
+        "command": "logickal.sidebar.itemClicked",
+        "title": "sidebar item"
+      },
+      {
+        "command": "logickal.sidebar.newGroup",
+        "title": "New Group",
+        "icon": {
+          "light": "media/lightImg/newGroup.svg",
+          "dark": "media/darkImg/newGroup.svg"
+        }
+      },
+      {
+        "command": "logickal.sidebar.newText",
+        "title": "New Text",
+        "icon": {
+          "light": "media/lightImg/newText.svg",
+          "dark": "media/darkImg/newText.svg"
+        }
+      },
+      {
+        "command": "logickal.sidebar.newWhiteboard",
+        "title": "New Whiteboard",
+        "icon": {
+          "light": "media/lightImg/newWhiteboard.svg",
+          "dark": "media/darkImg/newWhiteboard.svg"
+        }
+      },
+      {
+        "command": "logickal.sidebar.refresh",
+        "title": "Refresh",
+        "icon": {
+          "light": "media/lightImg/refresh.svg",
+          "dark": "media/darkImg/refresh.svg"
+        }
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "logickal.sidebar.newGroup",
+          "when": "view == logickal.sidebar",
+          "group": "navigation@0"
+        },
+        {
+          "command": "logickal.sidebar.newText",
+          "when": "view == logickal.sidebar",
+          "group": "navigation@0"
+        },
+        {
+          "command": "logickal.sidebar.newWhiteboard",
+          "when": "view == logickal.sidebar",
+          "group": "navigation@0"
+        },
+        {
+          "command": "logickal.sidebar.refresh",
+          "when": "view == logickal.sidebar",
+          "group": "navigation@0"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.77.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.5",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.0.1",
+    "@vscode/test-electron": "^2.3.0"
+  }
+}
